@@ -1,0 +1,36 @@
+#
+# Complete the 'maximumPower' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+def get_power(k):
+    cnt=0
+    m=0
+    for i in range(len(k)):
+        if(k[i]=='0'):
+            cnt=cnt+1
+        else:
+            if(m<cnt):
+                m=cnt
+            cnt=0
+    if(m<cnt):
+        m=cnt
+    return(m)
+def maximumPower(s):
+    p=0
+    m=0
+    flag=0
+    n=len(s)
+    k=list(s)
+    for i in range(n):
+        t=k.pop()
+        k.insert(0,t)
+        if(k[0]=='1'):
+            m=get_power(k)
+            break
+        flag=flag+1
+    if(flag==n):
+        return(-1)
+    else:
+        return(m)
